@@ -21,8 +21,12 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    pass
-    # return HttpResponse(f"You're looking at the results of question {question_id}")
+    question = get_object_or_404(Question, pk=question_id)
+    return render(
+        request,
+        template_name='polls/results.html',
+        context={'question': question}
+    )
 
 
 def vote(request, question_id):
