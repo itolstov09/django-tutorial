@@ -42,6 +42,8 @@ def vote(request, question_id):
             }
         )
     else:
+        # При сохранении возникает состояние гонки.
+        # Решение: https://docs.djangoproject.com/en/3.2/ref/models/expressions/#avoiding-race-conditions-using-f
         selected_choice.votes += 1
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
