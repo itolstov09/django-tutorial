@@ -23,6 +23,10 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+    def get_queryset(self):
+        """Возвращает вопрос, исключая еще не опубликованные, т.е. с датой публикации 'из будущего'"""
+        return Question.objects.filter(publication_date__lte=timezone.now())
+
 
 class ResultsView(generic.DetailView):
     model = Question
