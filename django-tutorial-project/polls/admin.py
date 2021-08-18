@@ -4,6 +4,10 @@ from django.contrib import admin
 
 from . models import Question
 
-admin.site.register(Question)
 
+class QuestuionAdmin(admin.ModelAdmin):
+    fields = ['publication_date', 'question_text']
+
+
+admin.site.register(Question, QuestuionAdmin)
 
