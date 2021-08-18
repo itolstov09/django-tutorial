@@ -6,7 +6,10 @@ from . models import Question
 
 
 class QuestuionAdmin(admin.ModelAdmin):
-    fields = ['publication_date', 'question_text']
+    fieldsets = [
+            (None, {'fields': ['question_text']}),
+            ('Date information', {'fields': ['pub_date']}),
+        ]
 
 
 admin.site.register(Question, QuestuionAdmin)
